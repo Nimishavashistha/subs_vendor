@@ -57,7 +57,8 @@ class _ProfilePageState extends State<ProfilePage> {
       setState(() {
         _isLoading = true;
       });
-      var response = await UpdateProfile.updateProfile(tokenProfile!.token,
+      var response = await UpdateProfile.updateProfile(
+          tokenProfile?.token,
           nameController.text,
           emailController.text,
           addressController.text,

@@ -25,7 +25,7 @@ class SignUp {
     print(response.data);
     if (response.statusCode == 200) {
       TokenProfile.fromJson(json.decode('"${response.data['data']}"'));
-          print('Token after signUp');
+      print('Token after signUp');
       print(tokenProfile?.token);
       return response;
     } else if (response.statusCode == 400) {

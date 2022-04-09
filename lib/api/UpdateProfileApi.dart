@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UpdateProfile {
-  static Future updateProfile(token ,var name, var email, var address, var pincode, var type, var shopname ,var desc ) async {
+  static Future updateProfile(token, var name, var email, var address,
+      var pincode, var type, var shopname, var desc) async {
     var dio = Dio();
+    print("token");
     FormData formData = FormData.fromMap({
       'name': name,
       'email': email,
@@ -15,8 +17,9 @@ class UpdateProfile {
       'pincode': pincode,
       'type': type,
       'shopname': shopname,
-      'bio':desc
+      'bio': desc
     });
+    print("inside updateProfile");
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var response = await dio.post(

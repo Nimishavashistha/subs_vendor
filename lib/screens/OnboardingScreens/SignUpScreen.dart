@@ -49,7 +49,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   onSignUp() async {
+    print("inside signup function");
     if (_form.currentState!.validate() == true) {
+      print("inside signup");
       setState(() {
         _isLoading = true;
       });
@@ -57,6 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           phonetxtController.text, passwordController.text, type.toString());
 
       if (response.statusCode == 200) {
+        print("inside sign up response code");
         loginPreference?.setLoginStatus(true);
         setState(() {
           Navigator.pushNamed(context, ProfilePage.routeName);
@@ -82,8 +85,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     double defaultFontSize = 14;
     double height, width;
-height = MediaQuery.of(context).size.height;
-width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Form(
@@ -92,7 +95,7 @@ width = MediaQuery.of(context).size.width;
           padding: EdgeInsets.all(20),
           children: <Widget>[
             SizedBox(
-              height: height*0.09,
+              height: height * 0.09,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -100,13 +103,13 @@ width = MediaQuery.of(context).size.width;
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "hello!",
+                    "hello nimisha!",
                     style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(height: height*0.04),
+                SizedBox(height: height * 0.04),
                 Container(
-                  height: height*0.065,
+                  height: height * 0.065,
                   child: TextField(
                     showCursor: true,
                     decoration: InputDecoration(
@@ -145,10 +148,10 @@ width = MediaQuery.of(context).size.width;
                   ),
                 ),
                 SizedBox(
-                  height: height*0.02,
+                  height: height * 0.02,
                 ),
                 Container(
-                  height: height*0.065,
+                  height: height * 0.065,
                   child: TextFormField(
                       showCursor: true,
                       decoration: InputDecoration(
@@ -194,7 +197,7 @@ width = MediaQuery.of(context).size.width;
                       }),
                 ),
                 SizedBox(
-                  height: height*0.02,
+                  height: height * 0.02,
                 ),
                 Container(
                   // height: 50,
@@ -245,7 +248,7 @@ width = MediaQuery.of(context).size.width;
                       }),
                 ),
                 SizedBox(
-                  height: height*0.006,
+                  height: height * 0.006,
                 ),
                 /* Container(
                   width: double.infinity,
@@ -260,11 +263,11 @@ width = MediaQuery.of(context).size.width;
                   ),
                 ),*/
                 SizedBox(
-                  height: height*0.052,
+                  height: height * 0.052,
                 ),
                 Container(
                   width: width,
-                  height: height*0.065,
+                  height: height * 0.065,
                   child: TextButton(
                       onPressed: () async {
                         await onSignUp();
@@ -277,19 +280,19 @@ width = MediaQuery.of(context).size.width;
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                           )),
-                      child:  _isLoading
+                      child: _isLoading
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  height: height*0.04,
-                                  width: width*0.075,
+                                  height: height * 0.04,
+                                  width: width * 0.075,
                                   child: CircularProgressIndicator(
                                     color: Colors.white,
                                   ),
                                 ),
                                 SizedBox(
-                                  width: width*0.05,
+                                  width: width * 0.05,
                                 ),
                                 Text(
                                   "Please Wait...",
@@ -305,11 +308,11 @@ width = MediaQuery.of(context).size.width;
                             )),
                 ),
                 SizedBox(
-                  height: height*0.013,
+                  height: height * 0.013,
                 ),
               ],
             ),
-            SizedBox(height: height*0.364),
+            SizedBox(height: height * 0.364),
             Align(
               alignment: Alignment.bottomCenter,
               child: Row(

@@ -5,6 +5,7 @@ import 'package:subs_vendor/Utils/Constants.dart';
 import 'package:subs_vendor/api/ResetPasswordApi.dart';
 import 'package:subs_vendor/screens/OnboardingScreens/LoginScreen.dart';
 import 'package:subs_vendor/shared_preferences/token_preferences.dart';
+import 'package:subs_vendor/shared_preferences/token_profile.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   static var routeName = '/reset';
@@ -32,10 +33,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         _isLoading = true;
       });
       var response = await ResetApi.resetPassword(
+        tokenProfile?.token,
         widget.phone,
         passwordController.text,
       );
-
+      print("response code = ${response.statusCode}");
       if (response.statusCode == 200) {
         setState(() {
           Navigator.pushNamed(context, LoginScreen.routeName);
@@ -63,7 +65,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
     return Form(
-      key: _form,
+        key: _form,
         child: Scaffold(
             backgroundColor: Colors.white,
             body: ListView(padding: EdgeInsets.all(20), children: <Widget>[

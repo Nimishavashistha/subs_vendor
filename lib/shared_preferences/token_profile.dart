@@ -6,10 +6,10 @@ import 'package:subs_vendor/shared_preferences/token_preferences.dart';
 TokenProfile? tokenProfile;
 
 class TokenProfile {
-  var token;
+  String token = "";
 
   TokenProfile.values({
-    this.token,
+    required this.token,
   });
 
   TokenProfile.fromJson(String value) {
